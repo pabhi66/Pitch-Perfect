@@ -1,0 +1,12 @@
+PODS:
+  - AudioIndicatorBars (0.0.2)
+
+DEPENDENCIES:
+  - AudioIndicatorBars (~> 0.0.2)
+
+SPEC CHECKSUMS:
+  AudioIndicatorBars: 10bf47c8422578dab5046e795a85a0f9b292d57d
+
+PODFILE CHECKSUM: 445a897157158ff29c866f5430e76656485d0303
+
+COCOAPODS: 1.2.0

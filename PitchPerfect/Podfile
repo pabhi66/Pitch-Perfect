@@ -1,0 +1,9 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+
+target 'PitchPerfect' do
+use_frameworks!
+// ...
+pod 'AudioIndicatorBars', '~> 0.0.2'
+// ...
+end

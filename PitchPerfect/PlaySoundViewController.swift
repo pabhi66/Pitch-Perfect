@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+
 class PlaySoundViewController: UIViewController {
  
     var recordedAudioURL: URL!
@@ -20,7 +21,12 @@ class PlaySoundViewController: UIViewController {
     enum ButtonType: Int {
         case slow = 0, fast, chipmunk, vader, echo, reverb
     }
+ 
+
+
     
+    @IBOutlet weak var portrait: UIStackView!
+    @IBOutlet weak var landscape: UIStackView!
     @IBOutlet weak var snailButton: UIButton!
     @IBOutlet weak var chipmunkButton: UIButton!
     @IBOutlet weak var rabbitButton: UIButton!
@@ -41,6 +47,49 @@ class PlaySoundViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureUI(.notPlaying)
+        
+        // Get device orientation
+        let currentDevice: UIDevice = UIDevice.current
+        let orientation: UIDeviceOrientation = currentDevice.orientation
+        
+        // Layout screen
+        if orientation.isPortrait {
+            UIView.animate(withDuration: 0.25) { () -> Void in
+                self.portrait.isHidden = false
+                self.landscape.isHidden = true
+            }
+        } else if orientation.isLandscape {
+            UIView.animate(withDuration: 0.25) { () -> Void in
+                self.portrait.isHidden = true
+                self.landscape.isHidden = false
+            }
+        }
+        
+        
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        // Get device orientation
+        let currentDevice: UIDevice = UIDevice.current
+        let orientation: UIDeviceOrientation = currentDevice.orientation
+        
+        // Layout screen
+        if orientation.isPortrait {
+            UIView.animate(withDuration: 0.25) { () -> Void in
+                self.portrait.isHidden = false
+                self.landscape.isHidden = true
+            }
+        } else if orientation.isLandscape {
+            UIView.animate(withDuration: 0.25) { () -> Void in
+                self.portrait.isHidden = true
+                self.landscape.isHidden = false
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        stopAudio()
     }
     
     
